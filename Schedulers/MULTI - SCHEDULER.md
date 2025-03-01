@@ -2,7 +2,7 @@
 
 ## **Kubernetes Scheduling Process**
 
-![Kubernetes Scheduler Flow](:images/scheduler.png)
+![Kubernetes Scheduler Flow](/images/scheduler.png)
 
 1. **Pod Creation** → Pod enters **Scheduling Queue**.
 2. **Sorting Phase** → Pods are **sorted by priority**.
