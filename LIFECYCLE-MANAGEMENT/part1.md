@@ -8,8 +8,7 @@
 - **Scaling Applications** - Adjust the number of running pods.
 - **Multi-Container Pods** - Design patterns for running multiple containers in a pod.
 - **InitContainers** - Pre-start containers to initialize resources.
-- **Self-Healing Applications** - Ensure availability using liveness and readiness probes.
-- **Autoscaling** - Automatically adjust resources based on demand.
+
 
 ---
 
@@ -163,75 +162,6 @@ spec:
     - name: main-app
       image: nginx
 ```
-
----
-
-### **8. Self-Healing Applications**
-#### **Declarative YAML:**
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: self-healing-pod
-spec:
-  containers:
-    - name: nginx
-      image: nginx
-      livenessProbe:
-        httpGet:
-          path: /
-          port: 80
-        initialDelaySeconds: 3
-        periodSeconds: 5
-```
-
----
-
-### **9. Autoscaling (Horizontal Pod Autoscaler - HPA)**
-#### **Imperative Commands:**
-```sh
-kubectl autoscale deployment my-app --cpu-percent=50 --min=1 --max=10
-```
-#### **Declarative YAML:**
-```yaml
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: my-app-hpa
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: my-app
-  minReplicas: 1
-  maxReplicas: 10
-  metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        target:
-          type: Utilization
-          averageUtilization: 50
-```
-
----
-
-### **10. Vertical Pod Autoscaler (VPA)**
-#### **Declarative YAML:**
-```yaml
-apiVersion: autoscaling.k8s.io/v1
-kind: VerticalPodAutoscaler
-metadata:
-  name: my-app-vpa
-spec:
-  targetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: my-app
-  updatePolicy:
-    updateMode: "Auto"
-```
-
 ---
 
 ### **Summary of Application Lifecycle Approaches:**
@@ -244,7 +174,6 @@ spec:
 | **Scaling Applications** | Manually increases or decreases pod replicas. |
 | **Multi-Container Pods** | Supports multiple containers within a single pod. |
 | **InitContainers** | Runs initialization steps before main containers start. |
-| **Self-Healing Applications** | Uses probes to restart unhealthy containers. |
-| **Autoscaling (HPA/VPA)** | Automatically adjusts pod resources based on CPU/Memory utilization. |
+
 
 
