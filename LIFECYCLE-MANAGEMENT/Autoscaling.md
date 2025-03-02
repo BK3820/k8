@@ -135,7 +135,7 @@ Vertical Pod Autoscaler consists of three main components:
 - **Updater evicts pods** when needed (only if `Recreate` or `Auto` mode is enabled).
 - **Admission Controller ensures** new pods start with correct resource requests.
 
-## **Cluster Autoscaler**
+## **3️⃣Cluster Autoscaler**
 Cluster Autoscaler automatically adds or removes nodes in a Kubernetes cluster based on the presence of pending pods that cannot be scheduled due to resource constraints.
 
 ### **Key Points:**
